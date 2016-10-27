@@ -8,27 +8,23 @@
 <script type="text/javascript" src="app.js"></script>
 
 <div ng-controller="PlayerController as players">
-<ul ng-repeat="player in players">
-<li ng-hide="player.entries.deleted">
-Name:{{player.entries.name}} <br/>
-Score:{{player.entries.score}}<button>edit</button><br/>
-<button ng-click="player.entries.deleted = true">delete</button>
+<ul ng-repeat="player in players.entries">
+<li ng-hide="player.deleted">
+Name:{{player.name}} <br/>
+Score:{{player.score}}<button>edit</button><br/>
+<button ng-click="player.deleted = true">delete</button>
 </li>
 </ul>
+
+<div ng-controller="FormController as FormCtrl">
+<form ng-submit="FormCtrl.addEntries()">
+<input ng-model="FormCtrl.entry.name" type="text" /><br/>
+<input ng-model="FormCtrl.entry.score" type="number" /><br/>
+<input type="submit">
+</form>
 </div>
 
-<form name="form" ng-controller="FormController as formCtrl" ng-submit="formCtrl.addEntries()">
-<blockquote>
-<b>{{formCtrl.entry.name}}</b><br/>
-<b>{{formCtrl.entry.score}}</b>
-</blockquote>
-<input ng-model="formCtrl.entry.name" type="text" placeholder="Name"/> <br/>
-<input ng-model="formCtrl.entry.score" type="number" placeholder="Score"/><br/>
-<input type="submit" value="submit"/>
-</form>
-
-
-
+</div>
 
 
 </body>
