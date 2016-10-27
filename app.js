@@ -11,13 +11,14 @@
 		this.entries=data;
 	});
 	
-    app.controller("FormController",function(){
+	app.controller("FormController",function(){
 		this.entry={};
-		this.entries=data;
-		this.addEntries=function(){
+		
+		this.addEntries=function(list){
 			this.entry[deleted]=false;
-			this.entries.push(this.entry);
+			list.push(this.entry);
 			this.entry={};
 		};
 	});
+    
 })();
