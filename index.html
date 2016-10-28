@@ -6,20 +6,33 @@
 <body>
 <script type="text/javascript" src="angular.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
-
+<h1>Enter your Name and Score:</h1>
 <div ng-controller="PlayerController as players">
 <ul ng-repeat="player in players.entries">
 <li ng-hide="player.deleted">
 Name:{{player.name}} <br/>
-Score:{{player.score}}<button>edit</button><br/>
+Score:{{player.score}}
+
+<section ng-init="edit=1">
+
+<button ng-show="edit===1" ng-click="edit = 0">edit score</button>
+<div ng-show="edit===0">
+<form ng-controller="EditScore" ng-submit="EditScore.edit(player)">
+<input ng-model="EditScore.editScore.score" type="number">
+<input type="submit">
+</form>
+</div>
+
+</section>
+
 <button ng-click="player.deleted = true">delete</button>
 </li>
 </ul>
 
 <div ng-controller="FormController as FormCtrl">
 <form ng-submit="FormCtrl.addEntries()">
-<input ng-model="FormCtrl.entry.name" type="text" /><br/>
-<input ng-model="FormCtrl.entry.score" type="number" /><br/>
+<input ng-model="FormCtrl.entry.name" type="text" placeholder="Name" /><br/>
+<input ng-model="FormCtrl.entry.score" type="number" placeholder="Score" /><br/>
 <input type="submit">
 </form>
 </div>
