@@ -1,0 +1,23 @@
+body{
+	background-color:grey;
+	padding-top:0px;
+}
+.main{
+	background-color:Indigo;
+	text-align:center;
+	margin-top:0px;
+	margin-left:20px;
+	margin-right:20px;
+	padding-bottom:20px;
+	border-color:black;
+	border-width:2px;
+	border-style:solid;
+}
+h1{
+	font-style:sans-serif;
+	
+}
+ul{
+	list-style:None;
+}
+
