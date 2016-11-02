@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 
-<html ng-app="add-player">
+<html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
-<body>
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="app.js"></script>
-<link rel="stylesheet" type="text/css" href="design.css" />
+<body class="container-fluid well" ng-app="add-player" ng-controller="LeaderboardController">
+<h1 class="text-primary">Enter the player name and score:</h1>
+<form ng-show="showbuttons">
+<button class="btn btn-primary"  ng-click="sortbyname()">sort by name</button>
+<button class = "btn btn-primary" ng-click="sortbyscore()">sort by score</button>
+</form>
+<p>
+<ul style="list-style:none">
 
-
-<div class="main" ng-controller="PlayerController as players">
-<h1 >Enter your Name and Score:</h1>
-<ul ng-repeat="player in players.entries">
-
-<li ng-hide="player.deleted">
-<p>Name:{{player.name}}
-<section ng-controller="EditController as editCtrl">
-Score:<span ng-show="editCtrl.value()===1">{{player.score}}</span>
-<button ng-show="editCtrl.value()===1" ng-click="editCtrl.click()">edit score</button>
-<div ng-show="editCtrl.value()===0">
-<input ng-model="players.score" type="number">
-<button  ng-click="editCtrl.click()">Submit</button>
+<li ng-repeat="player in players">
+<span style="font-size:20px"><strong>Name:</strong>{{player.name}}</span><br>
+<div class="row">
+<div class="col-md-2" style="font-size:20px">
+<strong>Score:</strong>{{player.score}}
 </div>
-<button ng-click="player.deleted = true">delete</button>
-</section>
-</p>
-</li>
-
-</ul>
-<div   ng-controller="FormController as FormCtrl" >
-<form name="form1" ng-submit="(form1.$valid && FormCtrl.addEntries())" novalidate>
-<input ng-model="FormCtrl.entry.name" type="text" placeholder="Name" required />
-<input ng-model="FormCtrl.entry.score" type="number" placeholder="Score" required />
-<input type="submit">
-
+<div class="col-md-4">
+<section ng-init="edit=0">
+<button class="btn btn-primary" ng-click="edit=1" ng-hide="edit===1">Edit Score</button>
+<form ng-show="edit===1"ng-submit="editPlayer(player,score)">
+<div class="row">
+<div class="col-md-4">
+<input class = "form-control"type="number" ng-model="score"/>
+</div>
+<div class="col-md-4">
+<input class = "btn btn-primary" ng-click="edit=0" type="submit"/>
+</div>
+</div>
 </form>
 </div>
-
 </div>
+<form ng-submit="deletePlayer(player)">
+<input class="btn btn-primary btn-danger" type="submit" value="delete"/>
+</form>
 
+</section>
+</div>
+</li>
+</ul>
+</p>
+<form name="submitform" ng-submit="submitform.$valid && createPlayer(name,score)" novalidate>
+<div class="row">
+<div class="col-md-4">
+<input class="form-control" type="text" placeholder="name" ng-model="name" required/>
+</div>
+<div class="col-md-4">
+<input class="form-control" type="number" placeholder="score" ng-model="score" required/>
+</div>
+<div class="col-md-4">
+<input class = "btn btn-primary" type="submit"/>
+</div>
+</div>
+</form>
 
 </body>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+
 </html>
