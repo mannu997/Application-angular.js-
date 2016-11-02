@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
+  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
+  
 <body class="container-fluid well" ng-app="add-player" ng-controller="LeaderboardController">
+
 <h1 class="text-primary">Enter the player name and score:</h1>
+
 <form ng-show="showbuttons">
 <button class="btn btn-primary"  ng-click="sortbyname()">sort by name</button>
 <button class = "btn btn-primary" ng-click="sortbyscore()">sort by score</button>
 </form>
+
 <p>
 <ul style="list-style:none">
-
 <li ng-repeat="player in players">
 <span style="font-size:20px"><strong>Name:</strong>{{player.name}}</span><br>
 <div class="row">
@@ -38,12 +44,12 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <form ng-submit="deletePlayer(player)">
 <input class="btn btn-primary btn-danger" type="submit" value="delete"/>
 </form>
-
 </section>
 </div>
 </li>
 </ul>
 </p>
+
 <form name="submitform" ng-submit="submitform.$valid && createPlayer(name,score)" novalidate>
 <div class="row">
 <div class="col-md-4">
@@ -59,6 +65,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 </form>
 
 </body>
+
 <script type="text/javascript" src="angular.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 
