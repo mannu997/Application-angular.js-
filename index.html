@@ -22,9 +22,9 @@
                                 <input class = "form-control" type="number" ng-model="score"/>
                                 <input class = "btn btn-primary" ng-click="edit=0" type="submit"/>
                             </form>
-                            <form ng-submit="deletePlayer(player)">
+                           <form ng-submit="deletePlayer({{player.id}})">
                                 <input class="btn btn-primary btn-danger" type="submit" value="delete"/>
-                            </form>
+                            </form> 
                         </section>
                 </li>
             </ul>
