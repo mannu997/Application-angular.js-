@@ -53,22 +53,26 @@
         
 		    $scope.sortbyname=function(){
 			      var compare=function(a,b){
-				        if (a.name<b.name)
+				        if (a.name<b.name){
 					          return -1;
-				        if (a.name>b.name)
+                }
+				        if (a.name>b.name){
                     return 1;
-                return 0					
+                }
+                return 0;					
 		      	};
 		        $scope.players.sort(compare);
 		    }
 		
 		    $scope.sortbyscore=function(){
-			     var compare=function(a,b){
-				        if (a.score<b.score)
+			      var compare=function(a,b){
+				        if (a.score<b.score){
 				           	return -1;
-				        if (a.score>b.score)
+                }
+				        if (a.score>b.score){
                     return 1;
-                return 0					
+                }
+                return 0;					
 			      };
 		        $scope.players.sort(compare);
 		  }
