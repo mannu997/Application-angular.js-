@@ -1,4 +1,5 @@
 <?php
+    header("Content-Type:application/json");
     $dbc = mysqli_connect("localhost","root","radhaswami","app_data") or die("error");
     $query = "SELECT * FROM players";
     $result = mysqli_query($dbc,$query) or die("error");
@@ -10,6 +11,7 @@
          $data[]=$response;
     }
     
-    print json_encode($data);
-
+    
+    echo json_encode($data);
+    
 ?>
