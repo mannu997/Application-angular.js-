@@ -31,11 +31,10 @@
 			$scope.players[index]["score"]=score;
 		};
 		
-		$scope.deletePlayer=function(player){
-			var index=$scope.players.indexOf(player);
-			$scope.players.splice(index,1);
-			if ($scope.players.length==0 && $scope.showbuttons==true)
-				$scope.showbuttons=false;
+		$scope.deletePlayer=function(eyed){
+		
+
+		
 		};
 		 
 		$scope.sortbyname=function(){
